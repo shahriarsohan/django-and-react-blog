@@ -5,3 +5,7 @@ build
 static
 media
 package-lock.json
+
+lib
+include
+bin
