@@ -1,0 +1,27 @@
+* {
+  font-family: "Bree Serif", serif;
+}
+
+.cat-sidebar {
+  width: 20%;
+}
+
+.profile-heading {
+  font-weight: bold;
+  background-color: white;
+  text-align: center;
+  border: 0.5rem red solid;
+  border-radius: 1rem;
+}
+
+.profile-icon {
+  display: inline-block;
+}
+
+.profile-icon a {
+  padding: 1rem;
+  size: 30%;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+}

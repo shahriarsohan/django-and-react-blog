@@ -1,9 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl } from "react-bootstrap";
+
+import { authLogout } from "../../store/actions/index";
+
 import "./Header.css";
 
-const Header = () => {
+const Header = props => {
+  const { isAuthenticated, logout } = props;
   return (
     <>
       <header className="main-header">
@@ -48,21 +53,26 @@ const Header = () => {
                 Contatct
               </Link>
             </li>
-            <li className="main-nav__item main-nav__item--cta">
-              <Link to="/" className="item">
-                Login
-              </Link>
-            </li>
-            <li className="main-nav__item main-nav__item--cta">
-              <Link to="/" className="item">
-                Logout
-              </Link>
-            </li>
-            <li className="main-nav__item main-nav__item--cta">
-              <Link to="/" className="item">
-                Register
-              </Link>
-            </li>
+            {isAuthenticated ? (
+              <li className="main-nav__item main-nav__item--cta">
+                <Button onClick={() => logout()} variant="danger">
+                  Logout
+                </Button>
+              </li>
+            ) : (
+              <React.Fragment>
+                <li className="main-nav__item main-nav__item--cta">
+                  <Link to="/login" className="item">
+                    Login
+                  </Link>
+                </li>
+                <li className="main-nav__item main-nav__item--cta">
+                  <Link to="/register" className="item">
+                    Register
+                  </Link>
+                </li>
+              </React.Fragment>
+            )}
           </ul>
         </nav>
       </header>
@@ -70,4 +80,19 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
+
+const maoDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(authLogout())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  maoDispatchToProps
+)(Header);

@@ -9,3 +9,4 @@ package-lock.json
 bin
 lib
 include
+db.sqlite3

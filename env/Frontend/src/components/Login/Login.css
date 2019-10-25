@@ -1,9 +1,8 @@
 /* .root {
-  display: inline;
   position: relative;
 } */
 
-.text {
+.text1 {
   color: #292826;
   font-weight: bolder;
   text-align: center;
@@ -14,7 +13,7 @@
   display: inline-block;
 }
 
-.paragraph {
+.paragraph1 {
   position: absolute;
   top: 450px;
   left: 1350px;
@@ -22,6 +21,6 @@
 
 .image {
   position: absolute;
-  top: 90px;
+  top: -20px;
   left: 915px;
 }
