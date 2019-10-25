@@ -2,9 +2,12 @@ import os
 import random
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import pre_save
 from django.utils import timezone
 
 from tinymce import HTMLField
+
+from blog.utils import unique_slug_generator
 
 
 def get_filename_ext(filepath):
@@ -59,3 +62,11 @@ class Posts(models.Model):
 
     def __str__(self):
         return self.title
+
+
+def unique_slug_generator_reciever(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(unique_slug_generator_reciever, sender=Posts)

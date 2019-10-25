@@ -1,0 +1,27 @@
+/* .root {
+  display: inline;
+  position: relative;
+} */
+
+.text {
+  color: #292826;
+  font-weight: bolder;
+  text-align: center;
+  position: absolute;
+  font-size: 100px;
+  top: 180px;
+  left: 800px;
+  display: inline-block;
+}
+
+.paragraph {
+  position: absolute;
+  top: 450px;
+  left: 1350px;
+}
+
+.image {
+  position: absolute;
+  top: 90px;
+  left: 915px;
+}

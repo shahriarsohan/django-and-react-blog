@@ -6,6 +6,6 @@ static
 media
 package-lock.json
 
+bin
 lib
 include
-bin

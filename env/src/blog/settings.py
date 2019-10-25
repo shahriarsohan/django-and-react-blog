@@ -38,10 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+
     'posts',
     'rest_framework',
     'corsheaders',
-    'tinymce'
+    'tinymce',
+    'rest_auth.registration',
+    'rest_framework.authtoken',
+    'rest_auth'
 ]
 
 

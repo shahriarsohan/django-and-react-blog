@@ -7,5 +7,8 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
 
     # api
-    path('api/v1/posts/', include("posts.api.urls"))
+    path('api/v1/posts/', include("posts.api.urls")),
+
+    # auth
+    path('rest-auth/', include('rest_auth.urls'))
 ]
