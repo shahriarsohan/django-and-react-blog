@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as actionTypes from "./actiontypes";
 
+import postsAPI from "../API/posts";
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
@@ -100,4 +101,11 @@ export const checkAuthState = () => {
       }
     }
   };
+};
+
+//posts fetch
+
+export const postfetch = () => async dispatch => {
+  const response = await postsAPI.get("/list");
+  dispatch({ type: actionTypes.FETCH_POSTS, payload: response.data });
 };

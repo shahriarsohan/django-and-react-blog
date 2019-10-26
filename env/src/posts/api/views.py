@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated ,  IsAuthenticatedOrReadOnly
 
 from posts.models import Posts, Category
 from .serializers import (
@@ -15,12 +15,12 @@ class CategoryListView(ListAPIView):
 
 class ListView(ListAPIView):
     queryset = Posts.objects.filter(published=True)
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     serializer_class = PostsSerilizers
 
 
 class PostDetailsApiView(RetrieveAPIView):
     queryset = Posts.objects.filter(published=True)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = PostsSerilizers
     lookup_field = "slug"
