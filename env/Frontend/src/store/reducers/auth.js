@@ -36,7 +36,7 @@ const authlogout = (state, action) => {
   });
 };
 
-const Reducer = (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.AUTH_START:
       return authstart(state, action);
@@ -50,5 +50,3 @@ const Reducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
-
-export default Reducer;

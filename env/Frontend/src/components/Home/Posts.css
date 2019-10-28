@@ -2,6 +2,49 @@
   width: 60%;
   display: block;
   position: relative;
+  padding: 2rem;
   border: 2px #dac193 solid;
   box-shadow: 1px 2px #888888;
+}
+
+.posts .author-avator {
+  position: absolute;
+  left: 32rem;
+}
+
+.posts .category {
+  position: absolute;
+  top: 1.5rem;
+  left: 32rem;
+  padding: 1rem;
+  background-color: #ccdc39c2;
+  border: 2px #212121 solid;
+  border-radius: 2rem;
+}
+
+.posts .category:hover,
+.posts .category:active {
+  background: white;
+  color: #212121;
+}
+
+.posts a {
+  text-decoration: none;
+  color: #4caf50;
+}
+
+.posts .posts-overview {
+  max-width: 28rem;
+}
+
+.posts a:hover,
+.posts a:active {
+  font-weight: bold;
+  color: #795548;
+}
+
+.spinner {
+  position: absolute;
+  top: 5rem;
+  left: 60rem;
 }

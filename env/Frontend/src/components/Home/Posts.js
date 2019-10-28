@@ -1,43 +1,82 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Avatar from "react-avatar";
+
+import { Alert, Container, Spinner, Row, Col, Image } from "react-bootstrap";
 
 import "./Posts.css";
-
-import { postfetch } from "../../store/actions/index";
+import { postsListURL } from "../../endpoints";
 
 class Posts extends Component {
+  state = {
+    posts: [],
+    error: null,
+    loading: false
+  };
+
   componentDidMount() {
-    this.props.postfetch();
+    this.setState({
+      loading: true
+    });
+    axios
+      .get(postsListURL)
+      .then(res => {
+        this.setState({
+          posts: res.data,
+          loading: false
+        });
+      })
+      .catch(err => {
+        this.setState({
+          loading: false,
+          error: err
+        });
+      });
   }
   render() {
-    const { posts } = this.props;
+    const { posts, loading, error } = this.state;
     return (
-      <Container>
+      <>
+        {error && (
+          <Alert variant="danger" dismissible>
+            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+            <p>{JSON.stringify(error)}</p>
+          </Alert>
+        )}
+        {loading && <Spinner animation="grow" className="spinner" />}
+
         {posts.map(post => {
           return (
-            <div
-              className="posts"
-              style={{ left: "15rem", top: "-41rem", marginBottom: "1rem" }}
-            >
-              <h2>Posts title</h2>
-              <h4 className="category">Posts category</h4>
-              <p className="post-time">posts time</p>
-              <img src="" alt="author" />
-              <p className="posts-overview">posts overview</p>
-            </div>
+            <Container key={post.slug}>
+              <div
+                className="posts"
+                style={{ left: "15rem", top: "-41rem", marginBottom: "1rem" }}
+              >
+                {/* <div className="thumbnail">
+                  <img src={post.image} alt={post.title} />
+                </div> */}
+                <Link to="#">
+                  <h2>{post.title}</h2>
+                </Link>
+                <h4 className="category">{post.category.name}</h4>
+                <p className="post-time">posts time</p>
+                {/* <img src="" alt={post.author} /> */}
+                <div
+                  style={{ textTransform: "capitalize" }}
+                  className="author-avator"
+                >
+                  <Avatar name={post.author} size="40" round={true} />{" "}
+                  {post.author}
+                </div>
+                <p className="posts-overview">{post.overview}</p>
+              </div>
+            </Container>
           );
         })}
-      </Container>
+      </>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    posts: Object.values(state.posts),
-    isauth: state.auth.token !== null
-  };
-};
-
-export default connect(mapStateToProps)(Posts);
+export default Posts;
