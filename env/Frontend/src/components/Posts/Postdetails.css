@@ -1,0 +1,28 @@
+.posts1 {
+  width: 50%;
+  display: block;
+  position: relative;
+  bottom: 41.2rem;
+  left: 41rem;
+  padding: 0rem;
+  /* box-shadow: 1px 2px #c5c3c3; */
+}
+
+.sub-container {
+  margin-top: 2rem;
+  width: 90%;
+  border: 1px #dad4c9 solid;
+}
+
+.sub-container .post-heading {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.post-image {
+  vertical-align: middle;
+}
+
+.post-image img {
+  width: 920px;
+}

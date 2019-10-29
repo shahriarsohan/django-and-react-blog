@@ -1,21 +1,41 @@
 import React, { Component } from "react";
-
-import { Button, Card, Container, ListGroup } from "react-bootstrap";
+import { connect } from "react-redux";
+import axios from "axios";
+import { Card, Container, ListGroup } from "react-bootstrap";
 
 import "./SideBar.css";
+import { categoryList } from "../../endpoints";
 class SideBar extends Component {
+  state = {
+    error: null,
+    laoding: false,
+    category: []
+  };
+
+  componentDidMount() {
+    this.setState({ laoding: true });
+    axios
+      .get(categoryList)
+      .then(res => this.setState({ category: res.data }))
+      .catch(err => {
+        this.setState({ error: err });
+      });
+  }
+
   render() {
+    const { category, error, laoding } = this.state;
     return (
       <div style={{ marginTop: "5rem" }}>
         <Container>
           <div className="cat-sidebar">
-            <ListGroup>
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
+            {category.map(cat => {
+              return (
+                <ListGroup>
+                  <ListGroup.Item>{cat.name}</ListGroup.Item>
+                </ListGroup>
+              );
+            })}
+
             <Card style={{ width: "14rem", marginTop: "2rem" }}>
               <Card.Img
                 variant="top"
@@ -44,4 +64,4 @@ class SideBar extends Component {
     );
   }
 }
-export default SideBar;
+export default connect(null)(SideBar);

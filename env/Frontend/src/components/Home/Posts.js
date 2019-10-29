@@ -6,7 +6,7 @@ import Avatar from "react-avatar";
 import { Alert, Container, Spinner, Row, Col, Image } from "react-bootstrap";
 
 import "./Posts.css";
-import { postsListURL } from "../../endpoints";
+import { postsListURL, postDetailsURL } from "../../endpoints";
 
 class Posts extends Component {
   state = {
@@ -56,9 +56,10 @@ class Posts extends Component {
                 {/* <div className="thumbnail">
                   <img src={post.image} alt={post.title} />
                 </div> */}
-                <Link to="#">
+                <Link to={`/details/${post.slug}`}>
                   <h2>{post.title}</h2>
                 </Link>
+
                 <h4 className="category">{post.category.name}</h4>
                 <p className="post-time">posts time</p>
                 {/* <img src="" alt={post.author} /> */}
