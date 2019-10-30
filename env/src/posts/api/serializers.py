@@ -8,15 +8,6 @@ class StringSerializer(serializers.StringRelatedField):
         return value
 
 
-class CategorySerilizers(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = [
-            'name',
-            'slug',
-        ]
-
-
 class PostsSerilizers(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
     author = serializers.SerializerMethodField()
@@ -33,7 +24,7 @@ class PostsSerilizers(serializers.ModelSerializer):
             'published',
             'featured',
             'timestamp',
-            'image',
+            'image'
         ]
 
     def get_category(self, obj):
@@ -41,3 +32,13 @@ class PostsSerilizers(serializers.ModelSerializer):
 
     def get_author(self, obj):
         return str(obj.author.username)
+
+
+class CategorySerilizers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = [
+            'name',
+            'slug',
+        ]

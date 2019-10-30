@@ -24,3 +24,9 @@ class PostDetailsApiView(RetrieveAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = PostsSerilizers
     lookup_field = "slug"
+
+
+class PostsByCategory(RetrieveAPIView):
+    queryset = Posts.objects.filter(id=1)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    serializer_class = PostsSerilizers

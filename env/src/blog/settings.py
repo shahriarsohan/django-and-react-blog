@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'posts',
+    'contact',
     'rest_framework',
     'corsheaders',
     'tinymce',
