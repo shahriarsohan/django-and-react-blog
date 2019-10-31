@@ -15,7 +15,10 @@ urlpatterns = [
     path('api/v1/posts/', include("posts.api.urls")),
 
     # auth
-    path('rest-auth/', include('rest_auth.urls'))
+    path('rest-auth/', include('rest_auth.urls')),
+
+    # contact
+    path('contact', include('contact.api.urls'))
 ]
 
 if settings.DEBUG:

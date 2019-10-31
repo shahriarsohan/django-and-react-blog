@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home/Home";
 import PostDetails from "./components/Posts/PostDetails";
+import Contact from "./components/Contatct/Contact";
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/details/:postSlug" component={PostDetails} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={SignUp} />

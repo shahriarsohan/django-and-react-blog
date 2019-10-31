@@ -6,3 +6,4 @@ const endpoints = `${localhost}${apiURL}`;
 export const postsListURL = `${endpoints}/list`;
 export const postDetailsURL = slug => `${endpoints}/details/${slug}`;
 export const categoryList = `${endpoints}/category/list`;
+export const contactUrl = `${endpoints}/contact`;
